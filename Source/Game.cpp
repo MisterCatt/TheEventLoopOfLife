@@ -9,10 +9,16 @@ Game::~Game()
 {
 }
 
-void Game::Update() {
-	
+void Game::Play()
+{
+	Update();
+	Render();
 }
 
-void Game::Draw() {
+void Game::Update() {
+	sm->Update();
+}
+
+void Game::Render() {
 	sm->Render();
 }

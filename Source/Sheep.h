@@ -1,20 +1,24 @@
 #pragma once
-#include "Core.h"
+#include "Agent.h"
 
-class Sheep
+class Sheep : public Agent
 {
 public:
 	Sheep();
 	~Sheep();
 
-	bool dead;
-	bool isActive;
+	void Sense();
+	void Decide();
+	void Act();
 
-	Vector2 position;
+	float energy;
 
 private:
 
-	
+	void Idle();
+	void Run();
+
+
 
 };
 

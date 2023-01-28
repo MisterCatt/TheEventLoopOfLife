@@ -1,11 +1,17 @@
 #include "SheepManager.h"
 
-
 SheepManager* SheepManager::Instance = nullptr;
 
 SheepManager::SheepManager()
 {
-    sheep.push_back(new Sheep());
+    isHitBox = false;
+    sheepTexture = LoadTexture("Assets/Sheep.png");
+
+    totalSheep = 10;
+
+    for (int i = 0; i < totalSheep; i++) {
+        sheep.push_back(new Sheep());
+    }
 }
 
 SheepManager::~SheepManager()
@@ -23,7 +29,18 @@ void SheepManager::Render()
 {
     for (Sheep* s : sheep) {
         if (s->isActive) {
-            DrawCircle(s->position.x, s->position.y, 50, BLUE);
+            DrawTexture(sheepTexture,(int)s->GetPosition().x, (int)s->GetPosition().y,RAYWHITE);
+        }
+    }
+
+    DrawHitBox();
+}
+
+void SheepManager::Update()
+{
+    for (Sheep* s : sheep) {
+        if (s->dead) {
+            s->isActive = false;
         }
     }
 }
@@ -34,5 +51,20 @@ void SheepManager::RemoveDead()
         if (s->dead) {
             s->isActive = false;
         }
+    }
+}
+
+void SheepManager::DrawHitBox()
+{
+    if (IsKeyPressed(KEY_SPACE))
+        isHitBox = (isHitBox) ? false : true;
+       
+    if (isHitBox) {
+        for (Sheep* s : sheep) {
+            if (s->isActive) {
+                DrawRectangle((int)s->GetPosition().x, (int)s->GetPosition().y, sheepTexture.width, sheepTexture.height, RED);
+            }
+        }
+
     }
 }

@@ -7,8 +7,30 @@ Sheep::Sheep()
 	dead = false;
 	isActive = true;
 
+	energy = 100;
 }
 
 Sheep::~Sheep()
+{
+}
+
+void Sheep::Sense()
+{
+}
+
+void Sheep::Decide()
+{
+}
+
+void Sheep::Act()
+{
+}
+
+void Sheep::Idle()
+{
+
+}
+
+void Sheep::Run()
 {
 }

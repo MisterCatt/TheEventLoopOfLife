@@ -7,12 +7,12 @@ public:
 	Game();
 	~Game();
 
-	void Update();
-	void Draw();
-
-	SheepManager* sm;
+	void Play();
 
 private:
+	void Update();
+	void Render();
 
+	SheepManager* sm;
 };
 

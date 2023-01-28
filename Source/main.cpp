@@ -1,5 +1,4 @@
 #include "raylib.h"
-#include "level.h"
 #include "Game.h"
 
 // IMPORTANT:
@@ -29,7 +28,7 @@ int main(void)
 
         ClearBackground(RAYWHITE);
 
-        game.Draw();
+        game.Play();
 
         EndDrawing();
     }

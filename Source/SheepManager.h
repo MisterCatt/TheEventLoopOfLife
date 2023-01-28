@@ -1,6 +1,6 @@
 #pragma once
-#include "Core.h"
 #include "Sheep.h"
+#include <iostream>
 
 class SheepManager
 {
@@ -19,9 +19,15 @@ public:
 
 	void RemoveDead();
 
+	void DrawHitBox();
+
 private:
 	SheepManager();
 
-	//Texture2D sheepTexture;
+	int totalSheep;
+
+	Texture2D sheepTexture;
+
+	bool isHitBox;
 };
 
