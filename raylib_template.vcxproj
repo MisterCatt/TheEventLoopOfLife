@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Source\Agent.cpp" />
     <ClCompile Include="Source\Game.cpp" />
+    <ClCompile Include="Source\GameManager.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Sheep.cpp" />
     <ClCompile Include="Source\SheepManager.cpp" />
@@ -29,6 +30,7 @@
     <ClInclude Include="Source\Agent.h" />
     <ClInclude Include="Source\Core.h" />
     <ClInclude Include="Source\Game.h" />
+    <ClInclude Include="Source\GameManager.h" />
     <ClInclude Include="Source\Sheep.h" />
     <ClInclude Include="Source\SheepManager.h" />
   </ItemGroup>
