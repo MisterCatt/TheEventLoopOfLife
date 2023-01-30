@@ -4,7 +4,7 @@ GameManager::GameManager()
 {
 	sm = SheepManager::GetInstance();
 
-	aState = AgentState::Sensing;
+
 }
 
 GameManager::~GameManager()

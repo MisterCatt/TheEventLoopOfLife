@@ -13,6 +13,7 @@ public:
 	~SheepManager();
 
 	std::list<Sheep*> sheep;
+	std::list<Sheep*> activeSheep;
 
 	void Render();
 	void Update();

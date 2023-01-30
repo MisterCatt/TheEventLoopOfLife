@@ -10,8 +10,6 @@ public:
 
 private:
 
-	enum class AgentState {Sensing, Deciding, Acting} aState;
-
 	SheepManager* sm;
 
 };

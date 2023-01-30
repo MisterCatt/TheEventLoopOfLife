@@ -12,6 +12,8 @@ SheepManager::SheepManager()
     for (int i = 0; i < totalSheep; i++) {
         sheep.push_back(new Sheep());
     }
+
+    activeSheep = sheep;
 }
 
 SheepManager::~SheepManager()
@@ -27,10 +29,8 @@ SheepManager* SheepManager::GetInstance()
 
 void SheepManager::Render() 
 {
-    for (Sheep* s : sheep) {
-        if (s->isActive) {
-            DrawTexture(sheepTexture,(int)s->GetPosition().x, (int)s->GetPosition().y,RAYWHITE);
-        }
+    for (Sheep* s : activeSheep) {
+        DrawTexture(sheepTexture,(int)s->GetPosition().x, (int)s->GetPosition().y,RAYWHITE);
     }
 
     DrawHitBox();
@@ -38,18 +38,24 @@ void SheepManager::Render()
 
 void SheepManager::Update()
 {
-    for (Sheep* s : sheep) {
+    for (Sheep* s : activeSheep) {
         if (s->dead) {
             s->isActive = false;
         }
+        else {
+            s->Update();
+        }
     }
+
+    RemoveDead();
 }
 
 void SheepManager::RemoveDead() 
 {
-    for (Sheep* s : sheep) {
+    for (Sheep* s : activeSheep) {
         if (s->dead) {
             s->isActive = false;
+            activeSheep.remove(s);
         }
     }
 }
@@ -60,10 +66,8 @@ void SheepManager::DrawHitBox()
         isHitBox = (isHitBox) ? false : true;
        
     if (isHitBox) {
-        for (Sheep* s : sheep) {
-            if (s->isActive) {
-                DrawRectangle((int)s->GetPosition().x, (int)s->GetPosition().y, sheepTexture.width, sheepTexture.height, RED);
-            }
+        for (Sheep* s : activeSheep) {
+            DrawRectangle((int)s->GetPosition().x, (int)s->GetPosition().y, sheepTexture.width, sheepTexture.height, RED);
         }
 
     }

@@ -11,14 +11,16 @@ public:
 	void Decide();
 	void Act();
 
+	void Update();
+
 	float energy;
+
+	enum class Behaviour {Idle, Running} sheepBehaviour;
 
 private:
 
 	void Idle();
 	void Run();
-
-
 
 };
 
