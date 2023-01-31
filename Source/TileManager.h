@@ -1,12 +1,25 @@
 #pragma once
 #include "Core.h"
+#include "TileMap.h"
 
 class TileManager
 {
 public:
-	TileManager();
+
+	static TileManager* Instance;
+
+	static TileManager* GetInstance();
+
+	
 	~TileManager();
 
-private:
+	void Render();
+	void Update();
 
+	Rectangle GetTile(int x, int y);
+
+private:
+	TileManager();
+
+	TileMap tm;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include "SheepManager.h"
+#include "TileManager.h"
 
 class Game
 {
@@ -14,7 +15,7 @@ private:
 	void Render();
 
 	SheepManager* sm;
-
+	TileManager* tm;
 
 };
 

@@ -35,3 +35,15 @@ Vector2 Agent::GetPosition()
 	return position;
 }
 
+void Agent::SetPosition(int x, int y) 
+{
+	position = { (float)x, (float)y };
+}
+void Agent::SetPosition(float x, float y)
+{
+	position = { x, y };
+}
+void Agent::SetPosition(Vector2 pos) 
+{
+	position = pos;
+}

@@ -22,6 +22,9 @@ public:
 	float hp;
 
 	virtual Vector2 GetPosition();
+	void SetPosition(int x, int y);
+	void SetPosition(float x, float y);
+	void SetPosition(Vector2 pos);
 
 	enum class AgentState {Sensing, Deciding, Acting} state;
 
