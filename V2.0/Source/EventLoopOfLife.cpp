@@ -4,6 +4,8 @@ EventLoopOfLife::EventLoopOfLife(int _screenWidth, int _screenHeight)
 {
 	screenSize.x = _screenWidth;
 	screenSize.y = _screenHeight;
+
+	tileManager = TileManager::GetInstance();
 }
 
 EventLoopOfLife::~EventLoopOfLife()
@@ -54,12 +56,14 @@ int EventLoopOfLife::GetWindowHeight()
 
 void EventLoopOfLife::Update()
 {
-	std::cout << "Updating" << std::endl;
+	tileManager->Instance->Update();
+	ma.Update();
 }
 
 void EventLoopOfLife::Render()
 {
 	ClearBackground(BLACK);
 
-	std::cout << "Rendering" << std::endl;
+	tileManager->Render();
+	ma.Render();
 }

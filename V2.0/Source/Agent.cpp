@@ -33,3 +33,13 @@ Vector2 Agent::GetPosition()
 {
 	return _Position;
 }
+
+void Agent::SetPosition(Vector2 _Pos)
+{
+	_Position = _Pos;
+}
+
+float Agent::GetEnergy()
+{
+	return _Energy;
+}

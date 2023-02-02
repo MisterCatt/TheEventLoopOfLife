@@ -15,6 +15,9 @@ public:
 
 	void Timer();
 	Vector2 GetPosition();
+	void SetPosition(Vector2 _Pos);
+
+	float GetEnergy();
 
 	enum class AgentState { Sensing, Deciding, Acting } state;
 

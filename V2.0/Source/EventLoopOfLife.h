@@ -1,6 +1,8 @@
 #pragma once
 #include "Core.h"
 #include <iostream>
+#include "TileManager.h"
+#include "MouseAction.h"
 
 class EventLoopOfLife
 {
@@ -18,13 +20,15 @@ public:
 	int GetWindowWidth();
 	int GetWindowHeight();
 
-
 private:
 
 	Vector2 screenSize;
 
 	void Update();
 	void Render();
+
+	TileManager* tileManager;
+	MouseAction ma;
 
 };
 
