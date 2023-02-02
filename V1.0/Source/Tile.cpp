@@ -18,6 +18,9 @@ Tile::~Tile()
 
 void Tile::Update() 
 {
+	if (type != 1)
+		return;
+
 	switch (state)
 	{
 	case Agent::AgentState::Sensing:
@@ -41,11 +44,16 @@ Rectangle Tile::GetTile()
 
 void Tile::Sense() 
 {
+	//Sense if being stepped on.
+
 	state = AgentState::Deciding;
 }
 
 void Tile::Decide() 
 {
+	if (hp >= 100 && energy >= 100)
+		multiplying = true;
+
 	state = AgentState::Acting;
 }
 
@@ -64,6 +72,10 @@ void Tile::Act()
 		
 	}
 
+	if (eaten) {
+		hp /= 2;
+		eaten = false;
+	}
 
 	if (shouldSense)
 		state = AgentState::Sensing;

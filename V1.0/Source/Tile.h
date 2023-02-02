@@ -15,6 +15,7 @@ public:
 
 	bool multiplying;
 	bool trampled;
+	bool eaten;
 
 	Rectangle GetTile();
 

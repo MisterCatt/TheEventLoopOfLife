@@ -39,7 +39,7 @@ void Sheep::Act()
 	if (shouldSense)
 		state = AgentState::Sensing;
 	else
-		state = AgentState::Deciding;
+		state = AgentState::Acting;
 }
 
 void Sheep::Update()

@@ -8,10 +8,11 @@ TileMap::TileMap()
 	for (int y = 0; y < yTiles; y++) {
 		for (int x = 0; x < yTiles; x++) {
 			tileMap[y][x].SetPosition(x, y);
+			tileMap[y][x].type = GetRandomValue(0,2);
 		}
 	}
 
-	tileMap[10][10].type = 3;
+	
 }
 
 TileMap::~TileMap()
