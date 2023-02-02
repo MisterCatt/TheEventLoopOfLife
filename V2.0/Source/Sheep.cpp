@@ -3,6 +3,10 @@
 Sheep::Sheep()
 {
 	_Position = Vector2{ (float)GetRandomValue(0, GetScreenWidth()), (float)GetRandomValue(0, GetScreenHeight()) };
+
+	descision = SheepDecision::Wander;
+
+	_MovePoint = { _Position.x + (float)GetRandomValue(-50, 50), _Position.y + (float)GetRandomValue(-50, 50) };
 }
 
 Sheep::~Sheep()
@@ -25,6 +29,19 @@ void Sheep::Update()
 	default:
 		break;
 	}
+	/*if (IsKeyDown(KEY_RIGHT)) {
+		movePoint.x+=10;
+	}
+	if (IsKeyDown(KEY_UP)) {
+		movePoint.y-=10;
+	}
+	if (IsKeyDown(KEY_LEFT)) {
+		movePoint.x-=10;
+	}
+	if (IsKeyDown(KEY_DOWN)) {
+		movePoint.y+=10;
+	}*/
+
 	Timer();
 }
 
@@ -35,11 +52,34 @@ void Sheep::Sense()
 
 void Sheep::Decide()
 {
+	descision = SheepDecision::Wander;
+
 	state = AgentState::Acting;
 }
 
 void Sheep::Act()
 {
+	switch (descision)
+	{
+	case Sheep::SheepDecision::Evade:
+		EvadeWolves();
+		break;
+	case Sheep::SheepDecision::Find:
+		Find();
+		break;
+	case Sheep::SheepDecision::Eat:
+		Eat();
+		break;
+	case Sheep::SheepDecision::Breed:
+		Breed();
+		break;
+	case Sheep::SheepDecision::Wander:
+		Wander();
+		break;
+	default:
+		break;
+	}
+
 	switch (_ShouldSense)
 	{
 	case true:
@@ -75,4 +115,13 @@ void Sheep::Breed()
 
 void Sheep::Wander()
 {
+	//movePoint = { _Position.x + (float)GetRandomValue(0, GetScreenWidth()), _Position.y + (float)GetRandomValue(0, GetScreenHeight()) };
+
+	
+
+	_Position = MoveTowards(_MovePoint, _Position, 0.5f);
 }
+
+
+
+
