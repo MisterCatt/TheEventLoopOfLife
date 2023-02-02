@@ -8,19 +8,25 @@ public:
 	~Agent();
 
 	virtual void Update() = 0;
-	virtual void Render() = 0;
 
-protected:
 	virtual void Sense() = 0;
 	virtual void Decide() = 0;
 	virtual void Act() = 0;
 
+	void Timer();
+	Vector2 GetPosition();
+
+	enum class AgentState { Sensing, Deciding, Acting } state;
+
+	bool IsActive;
+
+protected:
+	
 	Vector2 _Position;
-	Vector2 _Energy;
+	float _Energy;
+	bool _ShouldSense;
 
 private:
-
-	void Timer();
-
+	float time;
 };
 
