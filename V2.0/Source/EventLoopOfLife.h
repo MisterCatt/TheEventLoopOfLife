@@ -3,6 +3,7 @@
 #include <iostream>
 #include "TileManager.h"
 #include "MouseAction.h"
+#include "SheepManager.h"
 
 class EventLoopOfLife
 {
@@ -11,14 +12,6 @@ public:
 	~EventLoopOfLife();
 
 	void Run();
-	void SetWindowSize(int _screenWidth, int _screenHeight);
-	void SetWindowSize(Vector2 _screenSize);
-	void SetWindowWidth(int _screenWidth);
-	void SetWindowHeight(int _screenHeight);
-
-	Vector2 GetWindowSize();
-	int GetWindowWidth();
-	int GetWindowHeight();
 
 private:
 
@@ -27,7 +20,9 @@ private:
 	void Update();
 	void Render();
 
+	SheepManager* sheepManager;
 	TileManager* tileManager;
+
 	MouseAction ma;
 
 };

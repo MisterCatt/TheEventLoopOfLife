@@ -3,10 +3,12 @@
 
 int main(void)
 {    
-    EventLoopOfLife elol;
+    
 
     SetConfigFlags(ConfigFlags::FLAG_WINDOW_RESIZABLE | ConfigFlags::FLAG_VSYNC_HINT | ConfigFlags::FLAG_MSAA_4X_HINT);
-    InitWindow(elol.GetWindowWidth(), elol.GetWindowHeight(), "The Event Loop of Life");
+    InitWindow(800, 800, "The Event Loop of Life");
+
+    EventLoopOfLife elol;
 
     SetTargetFPS(60);
     // SetExitKey(0);    // Uncomment this to disable ESC as exit key
