@@ -10,8 +10,6 @@ TileMap::TileMap()
 			map[x][y].SetPosition({ (float)x * xTiles, (float)y * yTiles });
 		}
 	}
-	//map[10][10].SetTileType(Grass);
-
 }
 
 TileMap::~TileMap()
@@ -21,10 +19,12 @@ TileMap::~TileMap()
 TileType TileMap::GetRandomTile() {
 	int x = GetRandomValue(0, 100);
 
-	if (x > 90) {
+	if (x > 90) 
+	{
 		return Rock;
 	}
-	if (x > 80) {
+	if (x > 80) 
+	{
 		return Grass;
 	}
 	else
