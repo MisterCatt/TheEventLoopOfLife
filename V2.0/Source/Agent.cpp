@@ -19,10 +19,12 @@ Agent::~Agent()
 
 void Agent::Timer()
 {
+	
 	if (!_ShouldSense) {
-		time += GetFrameTime();
+		time ++;		
 
-		if (time >= 250) {
+		if (time >= (60*0.25)) {
+			
 			_ShouldSense = true;
 			time = 0;
 		}

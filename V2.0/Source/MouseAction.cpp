@@ -13,8 +13,8 @@ MouseAction::~MouseAction()
 void MouseAction::Update()
 {
 	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-		selectedTile = tm->GetTile(GetMousePosition().x, GetMousePosition().y);
-		std::cout << "X: " << GetMousePosition().x << " Y: " << GetMousePosition().y << std::endl;
+		selectedTile = tm->GetTile((int)GetMousePosition().x, (int)GetMousePosition().y);
+		std::cout << "X: " << (float)GetMousePosition().x << " Y: " << (float)GetMousePosition().y << std::endl;
 
 		
 		std::cout << "TileX: " << floor(selectedTile.GetTileBox().x / 20) << " TileY: " << floor(selectedTile.GetTileBox().y / 20) << std::endl;
@@ -36,5 +36,5 @@ void MouseAction::Render()
 	if (!selected)
 		return;
 	
-	DrawRectangle(floor(selectedTile.GetTileBox().x /20)*40, floor(selectedTile.GetTileBox().y / 20)*40, selectedTile.GetTileBox().width, selectedTile.GetTileBox().height, RED);
+	DrawRectangle((int)floor(selectedTile.GetTileBox().x /20)*40, (int)floor(selectedTile.GetTileBox().y / 20)*40, (int)selectedTile.GetTileBox().width, (int)selectedTile.GetTileBox().height, RED);
 }

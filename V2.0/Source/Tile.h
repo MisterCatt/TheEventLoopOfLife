@@ -1,7 +1,6 @@
 #pragma once
-#include "Core.h"
 #include "Agent.h"
-#include "TileManager.h"
+#include <iostream>
 
 class Tile : public Agent
 {
@@ -22,12 +21,13 @@ public:
 
 	Rectangle GetTileBox();
 
+	void Spreading();
+
+	bool SpreadGrass;
+
 private:
+	enum GrassDecision { Grow, Trampled } descision;
 
-	enum class Descision { Spread, Grow, Trampeled } tileDecision;
-
-	TileType tileType;
-
-	TileManager* tm;
+	TileType tileType;	
 };
 

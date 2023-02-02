@@ -15,7 +15,8 @@ public:
 	void Update();
 	void Render();
 
-	Tile GetTile(int x, int y);
+	Tile GetTile(int, int);
+	void SpreadGrass(int, int);
 
 	TileMap tileMap;
 

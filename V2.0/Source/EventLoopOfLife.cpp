@@ -2,8 +2,8 @@
 
 EventLoopOfLife::EventLoopOfLife(int _screenWidth, int _screenHeight)
 {
-	screenSize.x = _screenWidth;
-	screenSize.y = _screenHeight;
+	screenSize.x = (float)_screenWidth;
+	screenSize.y = (float)_screenHeight;
 
 	tileManager = TileManager::GetInstance();
 }
@@ -20,8 +20,8 @@ void EventLoopOfLife::Run()
 
 void EventLoopOfLife::SetWindowSize(int _screenWidth, int _screenHeight)
 {
-	screenSize.x = _screenWidth;
-	screenSize.y = _screenHeight;
+	screenSize.x = (float)_screenWidth;
+	screenSize.y = (float)_screenHeight;
 }
 
 void EventLoopOfLife::SetWindowSize(Vector2 _screenSize)
@@ -31,12 +31,12 @@ void EventLoopOfLife::SetWindowSize(Vector2 _screenSize)
 
 void EventLoopOfLife::SetWindowWidth(int _screenWidth)
 {
-	screenSize.x = _screenWidth;
+	screenSize.x = (float)_screenWidth;
 }
 
 void EventLoopOfLife::SetWindowHeight(int _screenHeight)
 {
-	screenSize.y = _screenHeight;
+	screenSize.y = (float)_screenHeight;
 }
 
 Vector2 EventLoopOfLife::GetWindowSize()
@@ -46,12 +46,12 @@ Vector2 EventLoopOfLife::GetWindowSize()
 
 int EventLoopOfLife::GetWindowWidth()
 {
-	return screenSize.x;
+	return (int)screenSize.x;
 }
 
 int EventLoopOfLife::GetWindowHeight()
 {
-	return screenSize.y;
+	return (int)screenSize.y;
 }
 
 void EventLoopOfLife::Update()

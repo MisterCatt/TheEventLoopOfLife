@@ -10,7 +10,7 @@ Tile::Tile(TileType _tileType)
 		_Energy = 0;
 		break;
 	case Grass:
-		_Energy = 50;
+		_Energy = 10;
 		break;
 	case Rock:
 		_Energy = -1;
@@ -21,7 +21,9 @@ Tile::Tile(TileType _tileType)
 
 	trampeled = false;
 
-	tm = TileManager::GetInstance();
+	SpreadGrass = false;
+
+	descision = Grow;
 }
 
 Tile::~Tile()
@@ -30,6 +32,9 @@ Tile::~Tile()
 
 void Tile::Update()
 {
+	if (tileType != Grass)
+		return;
+
 	switch (state)
 	{
 	case Agent::AgentState::Sensing:
@@ -44,6 +49,7 @@ void Tile::Update()
 	default:
 		break;
 	}
+	Timer();
 }
 
 void Tile::Sense()
@@ -54,33 +60,21 @@ void Tile::Sense()
 
 void Tile::Decide()
 {
-	if(tileDecision != Descision::Trampeled)
-		if (_Energy >= 100) 
-		{
-			tileDecision = Descision::Spread;
-		}
-		else 
-		{
-			tileDecision = Descision::Grow;
-		}
-
-
+	if (_Energy >= 100) {
+		SpreadGrass = true;
+	}
 	state = AgentState::Acting;
 }
 
 void Tile::Act()
 {
 
-	switch (tileDecision)
+	switch (descision)
 	{
-	case Tile::Descision::Spread:
-		//spread to adjacant tile
-
-		break;
-	case Tile::Descision::Grow:
+	case Grow:
 		_Energy += 0.2f;
 		break;
-	case Tile::Descision::Trampeled:
+	case Trampled:
 		_Energy -= 0.2f;
 		break;
 	default:
@@ -115,7 +109,7 @@ void Tile::SetTileType(TileType _tileType)
 		_Energy = 0;
 		break;
 	case Grass:
-		_Energy = 50;
+		_Energy = 10;
 		break;
 	case Rock:
 		_Energy = -1;
@@ -128,4 +122,9 @@ void Tile::SetTileType(TileType _tileType)
 Rectangle Tile::GetTileBox()
 {
 	return Rectangle(_Position.x, _Position.y, (float)GetScreenWidth() / 20, (float)GetScreenHeight() / 20);
+}
+
+void Tile::Spreading()
+{
+	_Energy /= 2;
 }

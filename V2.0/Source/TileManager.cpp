@@ -22,6 +22,13 @@ void TileManager::Update()
 	for (int x = 0; x < tileMap.xTiles; x++) {
 		for (int y = 0; y < tileMap.yTiles; y++) {
 			tileMap.map[x][y].Update();
+
+			if (tileMap.map[x][y].SpreadGrass) 
+			{
+				SpreadGrass(x,y);
+				tileMap.map[x][y].Spreading();
+				tileMap.map[x][y].SpreadGrass = false;
+			}
 		}
 	}
 }
@@ -50,10 +57,46 @@ void TileManager::Render()
 
 Tile TileManager::GetTile(int x, int y)
 {
-	int xPos = floor(x / 40);
-	int yPos = floor(y / 40);
+	int xPos = (int)floor(x / 40);
+	int yPos = (int)floor(y / 40);
 
 
 	return tileMap.map[xPos][yPos];
 }
 
+void TileManager::SpreadGrass(int x, int y)
+{
+	for (int i = 0; i < 4; i++) {
+		char dir = "udlr"[rand() % 4];
+
+		if (dir == 'u') {
+			if (tileMap.map[x][y + 1].GetTileType() == Dirt) 
+			{
+				tileMap.map[x][y+1].SetTileType(Grass);
+				break;
+			}
+		}
+		if (dir == 'd') {
+			if (tileMap.map[x][y - 1].GetTileType() == Dirt) 
+			{
+				tileMap.map[x][y-1].SetTileType(Grass);
+				break;
+			}
+		}
+		if (dir == 'l') {
+			if (tileMap.map[x - 1][y].GetTileType() == Dirt) 
+			{
+				tileMap.map[x - 1][y].SetTileType(Grass);
+				break;
+			}
+		}
+		if (dir == 'r') {
+		if (tileMap.map[x + 1][y].GetTileType() == Dirt) {
+				tileMap.map[x +1][y].SetTileType(Grass);
+				break;
+			}
+		}
+	}
+
+
+}
