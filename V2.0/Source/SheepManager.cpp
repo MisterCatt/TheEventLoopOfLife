@@ -37,6 +37,7 @@ void SheepManager::Render()
     for (Sheep* s : sheepList) {
         if (!s->IsActive)
             continue;
+        s->Render();
         DrawTexture(sheepTexture, (int)s->GetPosition().x, (int)s->GetPosition().y, RAYWHITE);
     }
 

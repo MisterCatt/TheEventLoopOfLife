@@ -21,7 +21,7 @@ void Agent::Timer()
 {
 	
 	if (!_ShouldSense) {
-		time ++;		
+		time += GetFrameTime();
 
 		if (time >= (60*0.25)) {
 			

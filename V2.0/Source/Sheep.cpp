@@ -2,19 +2,29 @@
 
 Sheep::Sheep()
 {
+	tm = TileManager::GetInstance();
+
 	_Position = Vector2{ (float)GetRandomValue(0, GetScreenWidth()), (float)GetRandomValue(0, GetScreenHeight()) };
 
 	descision = SheepDecision::Wander;
 
-	_MovePoint = { _Position.x + (float)GetRandomValue(-50, 50), _Position.y + (float)GetRandomValue(-50, 50) };
+	_MovePoint = {(float)GetRandomValue(-50, 50),(float)GetRandomValue(-50, 50) };
+
+	hungry = false;
 }
 
 Sheep::~Sheep()
 {
 }
 
+void Sheep::Render() {
+	DrawCircle(_MovePoint.x, _MovePoint.y, 10, RED);
+}
+
 void Sheep::Update()
 {
+	
+
 	switch (state)
 	{
 	case Agent::AgentState::Sensing:
@@ -47,13 +57,37 @@ void Sheep::Update()
 
 void Sheep::Sense()
 {
+	/*for (int x = 0; x < 20; x++)
+	{
+		for (int y = 0; y < 20; y++) 
+		{
+			
+		}
+	}*/
+
+	//tile = tm->GetTile(10, 10);
+
+	//std::cout << tile.GetTileType() << std::endl;
+
 	state = AgentState::Deciding;
 }
 
 void Sheep::Decide()
 {
-	descision = SheepDecision::Wander;
+	if (Hp <= 50) {
+		hungry = true;
+	}
 
+	if (hungry) {
+		descision = SheepDecision::Find;
+	}
+	else {
+		descision = SheepDecision::Wander;
+		_MovePoint = { (float)GetRandomValue(_Position.x - 100, _Position.x + 100),(float)GetRandomValue(_Position.y - 100, _Position.y + 100) };
+
+	}
+
+	
 	state = AgentState::Acting;
 }
 
@@ -99,6 +133,7 @@ void Sheep::EvadeWolves()
 
 void Sheep::Find()
 {
+	
 }
 
 void Sheep::Eat()
@@ -115,10 +150,7 @@ void Sheep::Breed()
 
 void Sheep::Wander()
 {
-	//movePoint = { _Position.x + (float)GetRandomValue(0, GetScreenWidth()), _Position.y + (float)GetRandomValue(0, GetScreenHeight()) };
-
 	
-
 	_Position = MoveTowards(_MovePoint, _Position, 0.5f);
 }
 

@@ -10,7 +10,7 @@ int main(void)
 
     EventLoopOfLife elol;
 
-    SetTargetFPS(60);
+    //SetTargetFPS(60);
     // SetExitKey(0);    // Uncomment this to disable ESC as exit key
 
     while (!WindowShouldClose())
