@@ -7,7 +7,12 @@ public:
 	EventLoopOfLife();
 	~EventLoopOfLife();
 
+	void Draw();
+
 private:
+
+	void Update();
+	void Render();
 
 	TileMap tm;
 
